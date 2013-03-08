@@ -31,8 +31,13 @@ wassup.Main = function () {
     this.gitHubCommits;
     this.branchBar;
 
-    function configLoaded() {
+    function showSprintPeriod() {
+        me.sprintBarService.getCurrentSprint(function (sprintData) {
+            me.sprintPeriodBar.update(sprintData);
+        });
+    }
 
+    function configLoaded() {
         console.log( "getYouTrackCredentials", me.configService.getYouTrackCredentials() );
 
         me.teamCityDao = new wassup.TeamCityDao();
@@ -54,6 +59,8 @@ wassup.Main = function () {
         me.sprintBarService = new wassup.SprintBarService();
         me.sprintBarService.setYouTrackDao(me.youTrackDao);
         me.sprintBarService.setConfigService(me.configService);
+
+        showSprintPeriod();
     }
 
     this.init = function () {

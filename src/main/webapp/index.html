@@ -32,11 +32,11 @@
     <div class="days-remaining">
         <div class="donut-container">
             <div class="donut donut-big">
-                <div class="donut-arrow" data-percentage="95"></div>
+                <div id="donutSprintRemaining" class="donut-arrow" data-percentage="0"></div>
             </div>
         </div>
         <div class="countdown">
-            <span>14</span> days remaining
+            <span id="sprintDaysRemainingText"></span> days remaining
         </div>
     </div>
 
@@ -82,13 +82,13 @@
         console.log("http://www.gravatar.com/avatar/" + hash);
 
 
-        $.getJSON("js/model/sprintStatusBar.json", function (data) {
-            main.sprintBar.update(data);
-        });
+//        $.getJSON("js/model/sprintStatusBar.json", function (data) {
+//            main.sprintBar.update(data);
+//        });
 
-        main.branchBarService.getBranchBar("5.0", function (branchBar) {
-            main.branchBar.update(branchBar);
-        });
+//        main.branchBarService.getBranchBar("5.0", function (branchBar) {
+//            main.branchBar.update(branchBar);
+//        });
 
         $('[data-load=sprint-bar]').on('click', function () {
             $.getJSON("js/model/sprintStatusBar.json", function (data) {
@@ -119,9 +119,7 @@
                 main.sprintPeriodBar.update(sprintData);
             });
         });
-        main.sprintBarService.getCurrentSprint(function (sprintData) {
-            main.sprintPeriodBar.update(sprintData);
-        });
+
     });
 
 </script>

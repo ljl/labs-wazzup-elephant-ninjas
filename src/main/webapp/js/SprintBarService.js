@@ -42,7 +42,9 @@ wassup.SprintBarService = function () {
                 }
                 var sprintLength = currentSprint.finishDate.diff(currentSprint.startDate, 'minutes');
                 var sprintPosition = currentSprint.currentDate.diff(currentSprint.startDate, 'minutes');
-                currentSprint.progress = sprintPosition >= sprintLength? 100 : (sprintPosition / sprintLength);
+                var daysLeft = currentSprint.finishDate.diff(currentSprint.currentDate, 'days');
+                currentSprint.progress = sprintPosition >= sprintLength ? 100 : (sprintPosition / sprintLength);
+                currentSprint.daysReamining = daysLeft > 0 ? daysLeft : 0;
                 callback(currentSprint);
             });
         }

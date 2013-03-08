@@ -8,6 +8,7 @@ wassup.ConfigService = function () {
 
     // cached config
     var config;
+    var youTrackCredentials;
 
     this.getTeamCityUrl = function () {
 
@@ -15,10 +16,23 @@ wassup.ConfigService = function () {
         return "http://teamcity.enonic.net/";
     };
 
-    this.loadConfig = function () {
-        $.getJSON('js/config.json', function (configObj) {
-            config = configObj;
-        });
+    this.loadConfig = function (callback) {
+
+        return $.when(wassup.fetch('js/config.json')).
+            done(function (json) {
+
+                config = json;
+
+                return $.when(wassup.fetch('js/youtrack.credentials')).
+                    done(function (json) {
+
+                        youTrackCredentials = json;
+
+                        callback();
+                    });
+            }
+        )
+
     }
 
     this.getBranchConfigNames = function () {
@@ -47,6 +61,10 @@ wassup.ConfigService = function () {
 
         // TODO: resolve from config.json
         return "https://youtrack.enonic.net/";
+    }
+
+    this.getYouTrackCredentials = function () {
+        return youTrackCredentials;
     }
 
     this.getSprintConfig = function () {

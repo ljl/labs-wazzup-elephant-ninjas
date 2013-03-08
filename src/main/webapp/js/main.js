@@ -20,6 +20,7 @@ wassup.fetch = function (url, data, callback) {
 
 wassup.Main = function () {
 
+    var me = this;
     this.configService;
     this.teamCityDao;
     this.youTrackDao;
@@ -30,29 +31,33 @@ wassup.Main = function () {
     this.gitHubCommits;
     this.branchBar;
 
+    function configLoaded() {
+
+        console.log( "getYouTrackCredentials", me.configService.getYouTrackCredentials() );
+
+        me.teamCityDao = new wassup.TeamCityDao();
+        me.teamCityDao.setTeamCityUrl(me.configService.getTeamCityUrl());
+
+        me.branchBarService = new wassup.BranchBarService();
+        me.branchBarService.setTeamCityDao(me.teamCityDao);
+        me.branchBarService.setConfigService(me.configService);
+
+        me.sprintBar = new ui.sprintBar();
+        me.sprintPeriodBar = new ui.sprintPeriodBar();
+        me.branchBar = new ui.branchBar();
+        me.gitHubCommits = new ui.gitHubCommits();
+
+        me.youTrackDao = new wassup.YouTrackDao();
+        me.youTrackDao.setYouTrackUrl(me.configService.getYouTrackUrl());
+        me.youTrackDao.setYouTrackCredentials(me.configService.getYouTrackCredentials());
+
+        me.sprintBarService = new wassup.SprintBarService();
+        me.sprintBarService.setYouTrackDao(me.youTrackDao);
+        me.sprintBarService.setConfigService(me.configService);
+    }
 
     this.init = function () {
-
         this.configService = new wassup.ConfigService();
-        this.configService.loadConfig();
-
-        this.teamCityDao = new wassup.TeamCityDao();
-        this.teamCityDao.setTeamCityUrl(this.configService.getTeamCityUrl());
-
-        this.branchBarService = new wassup.BranchBarService();
-        this.branchBarService.setTeamCityDao(this.teamCityDao);
-        this.branchBarService.setConfigService(this.configService);
-
-        this.sprintBar = new ui.sprintBar();
-        this.sprintPeriodBar = new ui.sprintPeriodBar();
-        this.branchBar = new ui.branchBar();
-        this.gitHubCommits = new ui.gitHubCommits();
-
-        this.youTrackDao = new wassup.YouTrackDao();
-        this.youTrackDao.setYouTrackUrl(this.configService.getYouTrackUrl());
-
-        this.sprintBarService = new wassup.SprintBarService();
-        this.sprintBarService.setYouTrackDao(this.youTrackDao);
-        this.sprintBarService.setConfigService(this.configService);
+        this.configService.loadConfig( configLoaded );
     }
 }

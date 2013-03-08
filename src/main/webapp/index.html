@@ -9,6 +9,7 @@
     <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
           rel='stylesheet' type='text/css'>
     <link rel="stylesheet" href="css/lib/bootstrap.css">
+    <link rel="stylesheet" href="css/lib/donuts.css">
     <link rel="stylesheet/less" type="text/css" href="css/main.less"/>
 </head>
 <body>
@@ -20,10 +21,6 @@
     </div>
     <br/>
 
-    <div class="sprint-bar" data-component="sprint-bar">
-        Loading sprint bar...
-    </div>
-
     <div class="github-commits" data-component="github-commits">
 
     </div>
@@ -31,6 +28,22 @@
     <div class="branch-bars" data-component="branch-bars">
         Loading branch bars...
     </div>
+
+    <div class="days-remaining">
+        <div class="donut-container">
+            <div class="donut donut-big">
+                <div class="donut-arrow" data-percentage="95"></div>
+            </div>
+        </div>
+        <div class="countdown">
+            <span>14</span> days remaining
+        </div>
+    </div>
+
+    <div class="sprint-bar" data-component="sprint-bar">
+            Loading sprint bar...
+        </div>
+
 
     <br/>
     <button class="btn" data-load="sprint-bar">Load sprintbar</button>
@@ -44,6 +57,7 @@
 <script src="js/lib/moment.js"></script>
 <script src="js/lib/less.js"></script>
 <script src="js/lib/md5.js"></script>
+<script src="js/lib/donuts.js"></script>
 
 <!-- Controllers -->
 <script src="js/main.js"></script>
@@ -67,6 +81,14 @@
         var hash = md5("tsi@enonic.com");
         console.log("http://www.gravatar.com/avatar/" + hash);
 
+
+        $.getJSON("js/model/sprintStatusBar.json", function (data) {
+            main.sprintBar.update(data);
+        });
+
+        main.branchBarService.getBranchBar("5.0", function (branchBar) {
+            main.branchBar.update(branchBar);
+        });
 
         $('[data-load=sprint-bar]').on('click', function () {
             $.getJSON("js/model/sprintStatusBar.json", function (data) {
@@ -97,7 +119,9 @@
                 main.sprintPeriodBar.update(sprintData);
             });
         });
-
+        main.sprintBarService.getCurrentSprint(function (sprintData) {
+            main.sprintPeriodBar.update(sprintData);
+        });
     });
 
 </script>

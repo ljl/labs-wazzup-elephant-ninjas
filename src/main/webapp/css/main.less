@@ -17,6 +17,31 @@ h1 {
   text-shadow: 1px 1px @blur #333;
 }
 
+.days-remaining {
+  width:50%;
+  float:left;
+  box-sizing: border-box;
+  overflow: hidden;
+  margin-bottom:6rem;
+
+  .countdown {
+    width:50%;
+    float:left;
+    span {
+      font-size:16rem;
+      line-height:16rem;
+    }
+  }
+  .donut-container {
+    width:50%;
+    float:left;
+  }
+
+  .donut.donut-big {
+    font-size: 223px;
+  }
+}
+
 @import "sprint-bar.less";
 @import "github.less";
 @import "branch-bar.less";

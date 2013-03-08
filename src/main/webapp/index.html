@@ -36,7 +36,7 @@
             </div>
         </div>
         <div class="countdown">
-            <span id="sprintDaysRemainingText"></span> days remaining
+            <span>14</span> days remaining
         </div>
     </div>
 
@@ -82,13 +82,13 @@
         console.log("http://www.gravatar.com/avatar/" + hash);
 
 
-//        $.getJSON("js/model/sprintStatusBar.json", function (data) {
-//            main.sprintBar.update(data);
-//        });
+        /*$.getJSON("js/model/sprintStatusBar.json", function (data) {
+            main.sprintBar.update(data);
+        });
 
-//        main.branchBarService.getBranchBar("5.0", function (branchBar) {
-//            main.branchBar.update(branchBar);
-//        });
+        main.branchBarService.getBranchBar("5.0", function (branchBar) {
+            main.branchBar.update(branchBar);
+        });*/
 
         $('[data-load=sprint-bar]').on('click', function () {
             $.getJSON("js/model/sprintStatusBar.json", function (data) {
@@ -119,7 +119,9 @@
                 main.sprintPeriodBar.update(sprintData);
             });
         });
-
+/*        main.sprintBarService.getCurrentSprint(function (sprintData) {
+            main.sprintPeriodBar.update(sprintData);
+        });*/
     });
 
 </script>

@@ -28,14 +28,5 @@ ui.branchBar = function () {
                               '</li>' +
                               '</ul>' +
                               '</div>');
-        /*data.forEach(function (element, index, array) {
-         $(branchBarEl).append('<div class="' +
-         element.name +
-         '" style="width: ' +
-         element.progress +
-         '%;">' +
-         element.name +
-         '</div>');
-         });*/
     }
 }

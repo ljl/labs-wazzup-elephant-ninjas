@@ -35,10 +35,18 @@ wassup.Main = function () {
         me.sprintBarService.getCurrentSprint(function (sprintData) {
             me.sprintPeriodBar.update(sprintData);
         });
+
+        $.getJSON("js/model/sprintStatusBar.json", function (data) {
+            me.sprintBar.update(data);
+        });
+
+        me.branchBarService.getBranchBar("5.0", function (branchBar) {
+            me.branchBar.update(branchBar);
+        });
     }
 
     function configLoaded() {
-        console.log( "getYouTrackCredentials", me.configService.getYouTrackCredentials() );
+        console.log("getYouTrackCredentials", me.configService.getYouTrackCredentials());
 
         me.teamCityDao = new wassup.TeamCityDao();
         me.teamCityDao.setTeamCityUrl(me.configService.getTeamCityUrl());
@@ -65,6 +73,6 @@ wassup.Main = function () {
 
     this.init = function () {
         this.configService = new wassup.ConfigService();
-        this.configService.loadConfig( configLoaded );
+        this.configService.loadConfig(configLoaded);
     }
 }

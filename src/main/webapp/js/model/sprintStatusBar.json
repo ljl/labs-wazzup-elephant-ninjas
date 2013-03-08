@@ -1,0 +1,22 @@
+[
+    {
+        "name": "new",
+        "progress": 15
+    },
+    {
+        "name": "open",
+        "progress": 30
+    },
+    {
+        "name": "in-progress",
+        "progress": 15
+    },
+    {
+        "name": "pull-request",
+        "progress": 10
+    },
+    {
+        "name": "closed",
+        "progress": 30
+    }
+]

@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html class="no-js">
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <title></title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width">
+    <link href='http://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,700italic,800italic,400,300,600,700,800'
+          rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" href="css/lib/bootstrap.css">
+    <link rel="stylesheet/less" type="text/css" href="css/main.less"/>
+</head>
+<body>
+<div class="container-fluid">
+    <h1>Wazzup elephant ninjas?</h1>
+
+    <div class="sprint-period-bar" data-component="sprint-period-bar">
+        Loading sprint bar...
+    </div>
+    <br/>
+
+    <div class="sprint-bar" data-component="sprint-bar">
+        Loading sprint bar...
+    </div>
+
+    <div class="github-commits" data-component="github-commits">
+
+    </div>
+
+    <div class="branch-bars" data-component="branch-bars">
+        Loading branch bars...
+    </div>
+
+    <br/>
+    <button class="btn" data-load="sprint-bar">Load sprintbar</button>
+    <button class="btn" data-load="sprint-period-bar">Load sprint period</button>
+    <button class="btn" data-load="github-commits">Load github</button>
+    <button class="btn" data-load="branch-bar">Load branchbar</button>
+</div>
+
+<!-- Libraries -->
+<script src="js/lib/jquery-1.9.0.min.js"></script>
+<script src="js/lib/moment.js"></script>
+<script src="js/lib/less.js"></script>
+<script src="js/lib/md5.js"></script>
+
+<!-- Controllers -->
+<script src="js/main.js"></script>
+<script src="js/ConfigService.js"></script>
+<script src="js/BranchBarService.js"></script>
+<script src="js/TeamCityDao.js"></script>
+<script src="js/SprintBarService.js"></script>
+<script src="js/YouTrackDao.js"></script>
+
+<!-- View -->
+<script src="js/view/SprintBarComponent.js"></script>
+<script src="js/view/SprintPeriodBarComponent.js"></script>
+<script src="js/view/BranchBarComponent.js"></script>
+<script src="js/view/GitHubCommits.js"></script>
+
+<script type="text/javascript">
+    $(function () {
+        var main = new wassup.Main();
+        main.init();
+
+        var hash = md5("tsi@enonic.com");
+        console.log("http://www.gravatar.com/avatar/" + hash);
+
+
+        $.getJSON("js/model/sprintStatusBar.json", function (data) {
+            main.sprintBar.update(data);
+        });
+
+        main.branchBarService.getBranchBar("5.0", function (branchBar) {
+            main.branchBar.update(branchBar);
+        });
+
+        $('[data-load=sprint-bar]').on('click', function () {
+            $.getJSON("js/model/sprintStatusBar.json", function (data) {
+                main.sprintBar.update(data);
+            });
+
+        });
+
+        $('[data-load=branch-bar]').on('click', function () {
+            main.branchBarService.getBranchBars(function (branchBars) {
+                console.log("branchBars: ", branchBars);
+            });
+            main.branchBarService.getBranchBar("5.0", function (branchBar) {
+                main.branchBar.update(branchBar);
+            });
+        });
+
+        $('[data-load=github-commits]').on('click', function () {
+            main.branchBarService.getBranchBar("5.0", function (branchBar) {
+                $.getJSON("js/model/gitHubCommits.json", function (data) {
+                    main.gitHubCommits.update(data);
+                });
+            });
+        });
+
+        $('[data-load=sprint-period-bar]').on('click', function () {
+            main.sprintBarService.getCurrentSprint(function (sprintData) {
+                main.sprintPeriodBar.update(sprintData);
+            });
+        });
+        main.sprintBarService.getCurrentSprint(function (sprintData) {
+            main.sprintPeriodBar.update(sprintData);
+        });
+    });
+
+</script>
+</body>
+</html>

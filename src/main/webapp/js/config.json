@@ -1,0 +1,24 @@
+{
+    "teamCity": "http://teamcity.enonic.net/",
+    "branches": [
+        {
+            "name": "4.5",
+            "teamCity": {
+                "buildTypeId": "bt12"
+            }
+        },
+        {
+            "name": "4.7",
+            "teamCity": {
+                "buildTypeId": "bt5"
+            }
+        },
+        {
+            "name": "5.0",
+            "teamCity": {
+                "buildTypeId": "bt3"
+            }
+        }
+    ],
+    "youTrack": "http://youtrack.enonic.net/"
+}

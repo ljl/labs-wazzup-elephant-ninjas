@@ -1,0 +1,266 @@
+[
+    {
+        "sha": "117043cab6e7c499d30aade62be6256841e5cd6e",
+        "commit": {
+            "author": {
+                "name": "Pavel Milkevich",
+                "email": "pmi@enonic.com",
+                "date": "2013-02-22T09:28:28Z"
+            },
+            "committer": {
+                "name": "Pavel Milkevich",
+                "email": "pmi@enonic.com",
+                "date": "2013-02-22T09:28:28Z"
+            },
+            "message": "CMS-1016 Content Manager - Add \"editable\" path to content form",
+            "tree": {
+                "sha": "94969967d50459ae8f0a09795d3ee93fd68fd320",
+                "url": "https://api.github.com/repos/enonic/wem-ce/git/trees/94969967d50459ae8f0a09795d3ee93fd68fd320"
+            },
+            "url": "https://api.github.com/repos/enonic/wem-ce/git/commits/117043cab6e7c499d30aade62be6256841e5cd6e",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/enonic/wem-ce/commits/117043cab6e7c499d30aade62be6256841e5cd6e",
+        "comments_url": "https://api.github.com/repos/enonic/wem-ce/commits/117043cab6e7c499d30aade62be6256841e5cd6e/comments",
+        "author": {
+            "login": "pmi",
+            "id": 754221,
+            "avatar_url": "https://secure.gravatar.com/avatar/a53ee2993f975f4b0fd6496d6f2e72b0?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "a53ee2993f975f4b0fd6496d6f2e72b0",
+            "url": "https://api.github.com/users/pmi",
+            "html_url": "https://github.com/pmi",
+            "followers_url": "https://api.github.com/users/pmi/followers",
+            "following_url": "https://api.github.com/users/pmi/following",
+            "gists_url": "https://api.github.com/users/pmi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/pmi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/pmi/subscriptions",
+            "organizations_url": "https://api.github.com/users/pmi/orgs",
+            "repos_url": "https://api.github.com/users/pmi/repos",
+            "events_url": "https://api.github.com/users/pmi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/pmi/received_events",
+            "type": "User"
+        },
+        "committer": {
+            "login": "pmi",
+            "id": 754221,
+            "avatar_url": "https://secure.gravatar.com/avatar/a53ee2993f975f4b0fd6496d6f2e72b0?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "a53ee2993f975f4b0fd6496d6f2e72b0",
+            "url": "https://api.github.com/users/pmi",
+            "html_url": "https://github.com/pmi",
+            "followers_url": "https://api.github.com/users/pmi/followers",
+            "following_url": "https://api.github.com/users/pmi/following",
+            "gists_url": "https://api.github.com/users/pmi/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/pmi/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/pmi/subscriptions",
+            "organizations_url": "https://api.github.com/users/pmi/orgs",
+            "repos_url": "https://api.github.com/users/pmi/repos",
+            "events_url": "https://api.github.com/users/pmi/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/pmi/received_events",
+            "type": "User"
+        },
+        "parents": [
+            {
+                "sha": "72cfa762745008cf1ed15fca3373d52ee2c25d3a",
+                "url": "https://api.github.com/repos/enonic/wem-ce/commits/72cfa762745008cf1ed15fca3373d52ee2c25d3a"
+            }
+        ]
+    },
+    {
+        "sha": "72cfa762745008cf1ed15fca3373d52ee2c25d3a",
+        "commit": {
+            "author": {
+                "name": "Jørund Vier Skriubakken",
+                "email": "jvs@enonic.com",
+                "date": "2013-02-22T06:47:31Z"
+            },
+            "committer": {
+                "name": "Jørund Vier Skriubakken",
+                "email": "jvs@enonic.com",
+                "date": "2013-02-22T06:47:31Z"
+            },
+            "message": "CMS-738 Support for persisting of Relationships when creating or updating content\nMinor refactoring.",
+            "tree": {
+                "sha": "40a0bc8ff841e66128693229be9a121c16f4d03c",
+                "url": "https://api.github.com/repos/enonic/wem-ce/git/trees/40a0bc8ff841e66128693229be9a121c16f4d03c"
+            },
+            "url": "https://api.github.com/repos/enonic/wem-ce/git/commits/72cfa762745008cf1ed15fca3373d52ee2c25d3a",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/enonic/wem-ce/commits/72cfa762745008cf1ed15fca3373d52ee2c25d3a",
+        "comments_url": "https://api.github.com/repos/enonic/wem-ce/commits/72cfa762745008cf1ed15fca3373d52ee2c25d3a/comments",
+        "author": {
+            "login": "jvskriubakken",
+            "id": 353738,
+            "avatar_url": "https://secure.gravatar.com/avatar/6457a003713a951946b0e801ad849405?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "6457a003713a951946b0e801ad849405",
+            "url": "https://api.github.com/users/jvskriubakken",
+            "html_url": "https://github.com/jvskriubakken",
+            "followers_url": "https://api.github.com/users/jvskriubakken/followers",
+            "following_url": "https://api.github.com/users/jvskriubakken/following",
+            "gists_url": "https://api.github.com/users/jvskriubakken/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/jvskriubakken/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jvskriubakken/subscriptions",
+            "organizations_url": "https://api.github.com/users/jvskriubakken/orgs",
+            "repos_url": "https://api.github.com/users/jvskriubakken/repos",
+            "events_url": "https://api.github.com/users/jvskriubakken/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/jvskriubakken/received_events",
+            "type": "User"
+        },
+        "committer": {
+            "login": "jvskriubakken",
+            "id": 353738,
+            "avatar_url": "https://secure.gravatar.com/avatar/6457a003713a951946b0e801ad849405?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "6457a003713a951946b0e801ad849405",
+            "url": "https://api.github.com/users/jvskriubakken",
+            "html_url": "https://github.com/jvskriubakken",
+            "followers_url": "https://api.github.com/users/jvskriubakken/followers",
+            "following_url": "https://api.github.com/users/jvskriubakken/following",
+            "gists_url": "https://api.github.com/users/jvskriubakken/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/jvskriubakken/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jvskriubakken/subscriptions",
+            "organizations_url": "https://api.github.com/users/jvskriubakken/orgs",
+            "repos_url": "https://api.github.com/users/jvskriubakken/repos",
+            "events_url": "https://api.github.com/users/jvskriubakken/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/jvskriubakken/received_events",
+            "type": "User"
+        },
+        "parents": [
+            {
+                "sha": "47bfd51f07d7ed76440c4cf14f0d414a55f2af70",
+                "url": "https://api.github.com/repos/enonic/wem-ce/commits/47bfd51f07d7ed76440c4cf14f0d414a55f2af70"
+            }
+        ]
+    },
+    {
+        "sha": "47bfd51f07d7ed76440c4cf14f0d414a55f2af70",
+        "commit": {
+            "author": {
+                "name": "Jørund Vier Skriubakken",
+                "email": "jvs@enonic.com",
+                "date": "2013-02-21T18:40:50Z"
+            },
+            "committer": {
+                "name": "Jørund Vier Skriubakken",
+                "email": "jvs@enonic.com",
+                "date": "2013-02-21T18:40:50Z"
+            },
+            "message": "CMS-738 Support for persisting of Relationships when creating or updating content\nCreateContentHandler now creates Relationship of type PARENT for each found ContentReference.",
+            "tree": {
+                "sha": "58929d8da0672311ca7b7a3f1921d9b74d969d25",
+                "url": "https://api.github.com/repos/enonic/wem-ce/git/trees/58929d8da0672311ca7b7a3f1921d9b74d969d25"
+            },
+            "url": "https://api.github.com/repos/enonic/wem-ce/git/commits/47bfd51f07d7ed76440c4cf14f0d414a55f2af70",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/enonic/wem-ce/commits/47bfd51f07d7ed76440c4cf14f0d414a55f2af70",
+        "comments_url": "https://api.github.com/repos/enonic/wem-ce/commits/47bfd51f07d7ed76440c4cf14f0d414a55f2af70/comments",
+        "author": {
+            "login": "jvskriubakken",
+            "id": 353738,
+            "avatar_url": "https://secure.gravatar.com/avatar/6457a003713a951946b0e801ad849405?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "6457a003713a951946b0e801ad849405",
+            "url": "https://api.github.com/users/jvskriubakken",
+            "html_url": "https://github.com/jvskriubakken",
+            "followers_url": "https://api.github.com/users/jvskriubakken/followers",
+            "following_url": "https://api.github.com/users/jvskriubakken/following",
+            "gists_url": "https://api.github.com/users/jvskriubakken/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/jvskriubakken/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jvskriubakken/subscriptions",
+            "organizations_url": "https://api.github.com/users/jvskriubakken/orgs",
+            "repos_url": "https://api.github.com/users/jvskriubakken/repos",
+            "events_url": "https://api.github.com/users/jvskriubakken/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/jvskriubakken/received_events",
+            "type": "User"
+        },
+        "committer": {
+            "login": "jvskriubakken",
+            "id": 353738,
+            "avatar_url": "https://secure.gravatar.com/avatar/6457a003713a951946b0e801ad849405?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "6457a003713a951946b0e801ad849405",
+            "url": "https://api.github.com/users/jvskriubakken",
+            "html_url": "https://github.com/jvskriubakken",
+            "followers_url": "https://api.github.com/users/jvskriubakken/followers",
+            "following_url": "https://api.github.com/users/jvskriubakken/following",
+            "gists_url": "https://api.github.com/users/jvskriubakken/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/jvskriubakken/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/jvskriubakken/subscriptions",
+            "organizations_url": "https://api.github.com/users/jvskriubakken/orgs",
+            "repos_url": "https://api.github.com/users/jvskriubakken/repos",
+            "events_url": "https://api.github.com/users/jvskriubakken/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/jvskriubakken/received_events",
+            "type": "User"
+        },
+        "parents": [
+            {
+                "sha": "31c0beeaa059bcd39e869c8cbb492b3c9a5d2303",
+                "url": "https://api.github.com/repos/enonic/wem-ce/commits/31c0beeaa059bcd39e869c8cbb492b3c9a5d2303"
+            }
+        ]
+    },
+    {
+        "sha": "31c0beeaa059bcd39e869c8cbb492b3c9a5d2303",
+        "commit": {
+            "author": {
+                "name": "Alex Rodriguez",
+                "email": "aro@enonic.com",
+                "date": "2013-02-21T16:34:13Z"
+            },
+            "committer": {
+                "name": "Alex Rodriguez",
+                "email": "aro@enonic.com",
+                "date": "2013-02-21T16:34:57Z"
+            },
+            "message": "CMS-1060 Space Admin App - Delete spaces",
+            "tree": {
+                "sha": "3547615f45b0dee863152a65e9e9434c3c2aee77",
+                "url": "https://api.github.com/repos/enonic/wem-ce/git/trees/3547615f45b0dee863152a65e9e9434c3c2aee77"
+            },
+            "url": "https://api.github.com/repos/enonic/wem-ce/git/commits/31c0beeaa059bcd39e869c8cbb492b3c9a5d2303",
+            "comment_count": 0
+        },
+        "url": "https://api.github.com/repos/enonic/wem-ce/commits/31c0beeaa059bcd39e869c8cbb492b3c9a5d2303",
+        "comments_url": "https://api.github.com/repos/enonic/wem-ce/commits/31c0beeaa059bcd39e869c8cbb492b3c9a5d2303/comments",
+        "author": {
+            "login": "aro",
+            "id": 430739,
+            "avatar_url": "https://secure.gravatar.com/avatar/27221d49d50105cdf50494dbf46b6687?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "27221d49d50105cdf50494dbf46b6687",
+            "url": "https://api.github.com/users/aro",
+            "html_url": "https://github.com/aro",
+            "followers_url": "https://api.github.com/users/aro/followers",
+            "following_url": "https://api.github.com/users/aro/following",
+            "gists_url": "https://api.github.com/users/aro/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/aro/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/aro/subscriptions",
+            "organizations_url": "https://api.github.com/users/aro/orgs",
+            "repos_url": "https://api.github.com/users/aro/repos",
+            "events_url": "https://api.github.com/users/aro/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/aro/received_events",
+            "type": "User"
+        },
+        "committer": {
+            "login": "aro",
+            "id": 430739,
+            "avatar_url": "https://secure.gravatar.com/avatar/27221d49d50105cdf50494dbf46b6687?d=https://a248.e.akamai.net/assets.github.com%2Fimages%2Fgravatars%2Fgravatar-user-420.png",
+            "gravatar_id": "27221d49d50105cdf50494dbf46b6687",
+            "url": "https://api.github.com/users/aro",
+            "html_url": "https://github.com/aro",
+            "followers_url": "https://api.github.com/users/aro/followers",
+            "following_url": "https://api.github.com/users/aro/following",
+            "gists_url": "https://api.github.com/users/aro/gists{/gist_id}",
+            "starred_url": "https://api.github.com/users/aro/starred{/owner}{/repo}",
+            "subscriptions_url": "https://api.github.com/users/aro/subscriptions",
+            "organizations_url": "https://api.github.com/users/aro/orgs",
+            "repos_url": "https://api.github.com/users/aro/repos",
+            "events_url": "https://api.github.com/users/aro/events{/privacy}",
+            "received_events_url": "https://api.github.com/users/aro/received_events",
+            "type": "User"
+        },
+        "parents": [
+            {
+                "sha": "4f896b1e197a6c8cbddc310b6e91eb552391b753",
+                "url": "https://api.github.com/repos/enonic/wem-ce/commits/4f896b1e197a6c8cbddc310b6e91eb552391b753"
+            }
+        ]
+    }
+]

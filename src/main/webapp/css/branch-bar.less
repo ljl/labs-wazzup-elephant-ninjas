@@ -1,0 +1,75 @@
+/*
+Branch bar
+*/
+.branch-bars {
+  width:50%;
+
+  .head {
+    overflow: hidden;
+  }
+
+  .status {
+    width: 3em;
+    height: 3em;
+    background-color: green;
+    color: white;
+    float: left;
+    padding: 0.75em;
+    box-sizing: border-box;
+    width:50%;
+  }
+
+  ul {
+    list-style: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+  }
+
+  .tests {
+    text-transform: uppercase;
+    float: left;
+    width:50%;
+    li {
+      float: left;
+      padding: 0.75em;
+      color:white;
+      box-sizing: border-box;
+      width:33%;
+      //.text-shadow(0);
+    }
+    .passed {
+      color: #468847;
+      background-color: #dff0d8;
+      border-color: #d6e9c6;
+      &:after {
+        content: ' passed';
+      }
+    }
+
+    .ignored {
+      color: #c09853;
+      background-color: #fcf8e3;
+      &:after {
+        content: ' ignored';
+      }
+    }
+
+    .failed {
+      color: #b94a48;
+      background-color: #f2dede;
+      border-color: #eed3d7;
+      &:after {
+        content: ' failed';
+      }
+    }
+  }
+
+  .changes {
+    //margin: 0 0 0 3em;
+    color:#777;
+    li {
+      padding: 10px;
+    }
+  }
+}

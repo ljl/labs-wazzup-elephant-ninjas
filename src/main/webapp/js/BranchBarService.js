@@ -1,6 +1,3 @@
-if (!wassup) {
-    var wassup = {};
-}
 
 wassup.BranchBarService = function () {
 
@@ -18,44 +15,65 @@ wassup.BranchBarService = function () {
         configService = value;
     }
 
-    this.getBranchBars = function (callback) {
+    this.getBranchBars = function () {
 
         var branchNames = configService.getBranchConfigNames();
-        console.log("getBranchBars branchNames: ", branchNames);
 
         var branchBars = [];
 
-        var asyncMethods = [];
-
         for (var i in branchNames) {
             var branchName = branchNames[i];
-            //asyncMethods.push(thisService.getBranchBar(branchName));
+            branchBars.push( this.getBranchBar(branchName) );
         }
-
-        const branchName2 = branchNames[0];
-        asyncMethods.push(thisService.getBranchBar(branchName2));
-
-        console.log("asyncMethods", asyncMethods);
-
-        $.when.apply($, asyncMethods).done(function (json) {
-
-            console.log("getBranchBars json", json);
-//            for (j in arguments) {
-//                var arg = arguments[j];
-//                console.log("arg", arg);
-//                for (k in arg) {
-//                    var result = arg[k];
-//
-//                    console.log("result", result);
-//                    console.log("result.responseText", result.responseText);
-//                }
-//            }
-        });
-
-        //callback(branchBars);
+        return branchBars;
     }
 
-    this.getBranchBar = function (name, callback) {
+    this.getBranchBar = function (name) {
+
+        var branchBar = {};
+
+        var branchConfig = configService.getBranchConfig(name);
+        var buildJson;
+        var buildStatistics;
+        var changeIds = [];
+
+        //console.log( "getBranchBar branchConfig: ", branchConfig );
+
+        buildJson = teamCityDao.getBuild(branchConfig.teamCity.buildTypeId);
+        //console.log(" getBranchBar buildJson: ", buildJson);
+
+        branchBar.name = name;
+        branchBar.status = buildJson.status;
+
+        buildStatistics = teamCityDao.getBuildStatistics(branchConfig.teamCity.buildTypeId);
+
+        //console.log("getBranchBar buildStatistics: ", buildStatistics);
+
+        branchBar.passedTestCount = buildStatistics.property[7].value;
+        branchBar.failedTestCount = buildStatistics.property[5].value;
+        branchBar.ignoredTestCount = buildStatistics.property[6].value;
+
+        var changesRefJson = teamCityDao.get(buildJson.changes.href);
+
+        for (var index in changesRefJson.change) {
+            changeIds.push(changesRefJson.change[index].id);
+
+            var tcChangeJson = teamCityDao.getChanges(changesRefJson.change[index].id);
+            //console.log("getBranchBar change", tcChangeJson);
+            branchBar.changes = [];
+            var change = {
+                "message": tcChangeJson.comment,
+                "username": tcChangeJson.username
+            };
+
+            branchBar.changes.push(change);
+
+            //console.log("returned branchBar", branchBar);
+        }
+        return branchBar;
+    };
+
+    this.getBranchBar2 = function (name, callback) {
 
         var branchBar = {};
 

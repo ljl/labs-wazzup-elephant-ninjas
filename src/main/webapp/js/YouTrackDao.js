@@ -1,10 +1,6 @@
-if (!wassup) {
-    var wassup = {};
-}
 
 wassup.YouTrackDao = function () {
 
-    var thisDao = this;
     var youTrackUrl;
     var restUrl;
     var user;
@@ -22,7 +18,6 @@ wassup.YouTrackDao = function () {
 
     this.getSprintInfo = function (callback) {
 
-        console.log("getSprintInfo creds: ", user, password);
         var url = restUrl + "agile/CMS/sprints";
         $.ajax({
             url: url,

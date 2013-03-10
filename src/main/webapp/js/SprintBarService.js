@@ -1,6 +1,4 @@
-if (!wassup) {
-    var wassup = {};
-}
+
 
 wassup.SprintBarService = function () {
 
@@ -28,7 +26,6 @@ wassup.SprintBarService = function () {
         },
 
         getCurrentSprint: function (callback) {
-            var sprintConfig = configService.getSprintConfig();
 
             youTrackDao.getSprintInfo(function (youTrackSprintData) {
                 // Date logic to find current sprint

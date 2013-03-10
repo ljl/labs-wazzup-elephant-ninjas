@@ -10,7 +10,25 @@ wassup.fetch = function (url, data, callback) {
         url: url,
         data: data,
         dataType: 'json',
-        timeout: 5000,
+        async: true,
+        timeout: 1000,
+        success: callback,
+        error: function () {
+            console.log(arguments);
+        }
+    });
+}
+
+wassup.fetchJsonSync = function (url, data, callback) {
+
+    //console.log("fetching url: ", url);
+
+    return $.ajax({
+        url: url,
+        data: data,
+        dataType: 'json',
+        async: false,
+        timeout: 1000,
         success: callback,
         error: function () {
             console.log(arguments);
@@ -21,6 +39,11 @@ wassup.fetch = function (url, data, callback) {
 wassup.Main = function () {
 
     var me = this;
+    var autoMagicReloadInterval = 1000;
+    var reloadIntervalId;
+
+    var worker;
+
     this.configService;
     this.teamCityDao;
     this.youTrackDao;
@@ -31,22 +54,10 @@ wassup.Main = function () {
     this.gitHubCommits;
     this.branchBar;
 
-    function showSprintPeriod() {
-        me.sprintBarService.getCurrentSprint(function (sprintData) {
-            me.sprintPeriodBar.update(sprintData);
-        });
-
-        $.getJSON("js/model/sprintStatusBar.json", function (data) {
-            me.sprintBar.update(data);
-        });
-
-        me.branchBarService.getBranchBar("5.0", function (branchBar) {
-            me.branchBar.update(branchBar);
-        });
-    }
-
     function configLoaded() {
-        console.log("getYouTrackCredentials", me.configService.getYouTrackCredentials());
+
+        console.log("config loaded");
+
 
         me.teamCityDao = new wassup.TeamCityDao();
         me.teamCityDao.setTeamCityUrl(me.configService.getTeamCityUrl());
@@ -68,11 +79,52 @@ wassup.Main = function () {
         me.sprintBarService.setYouTrackDao(me.youTrackDao);
         me.sprintBarService.setConfigService(me.configService);
 
-        showSprintPeriod();
+        console.log("everything setup");
     }
 
     this.init = function () {
-        this.configService = new wassup.ConfigService();
-        this.configService.loadConfig(configLoaded);
+
+        // setup web worker
+        worker = new Worker("js/request-worker.js");
+        worker.onmessage = function (event) {
+            if (event.data.type == "debug") {
+                console.log(event.data.message);
+            }
+            else if (event.data.type = "branchBars") {
+                console.log("Received branchBars...");
+                console.log(event.data.branchBars);
+                //other types of data
+            }
+        }
+    }
+
+    this.reload = function () {
+
+        console.log("main.reload");
+
+        //main.sprintBar.update(data);
+
+        var branchBar = me.branchBarService.getBranchBar("5.0");
+        me.branchBar.update(branchBar);
+    }
+
+    this.startAutomagicUpdate = function () {
+
+        console.log("main.startAutomagicUpdate");
+
+        worker.postMessage({
+            "functionToExecute": "start"
+        });
+
+        //setTimeout(function () {
+        //    me.reload();
+        //}, autoMagicReloadInterval);
+        /*(function loop() {
+         reloadIntervalId = setTimeout(function () {
+         me.reload();
+         loop();
+         }, autoMagicReloadInterval);
+         })();*/
+
     }
 }

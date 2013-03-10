@@ -1,48 +1,33 @@
-if (!wassup) {
-    var wassup = {};
-}
-
 wassup.ConfigService = function () {
 
-    var thisService = this;
-
-    // cached config
     var config;
+
     var youTrackCredentials;
 
     this.getTeamCityUrl = function () {
-
-        // TODO: resolve from config.json
-        return "http://teamcity.enonic.net/";
+        return config.teamCity;
     };
 
-    this.loadConfig = function (callback) {
+    this.getYouTrackUrl = function () {
+        return config.youTrack;
+    };
 
-        return $.when(wassup.fetch('js/config.json')).
-            done(function (json) {
+    this.getYouTrackCredentials = function () {
+        return youTrackCredentials;
+    };
 
-                config = json;
-
-                return $.when(wassup.fetch('js/youtrack.credentials')).
-                    done(function (json) {
-
-                        youTrackCredentials = json;
-
-                        callback();
-                    });
-            }
-        )
-
+    this.loadConfig = function () {
+        config = wassup.fetchJsonSync('config.json');
+        youTrackCredentials = wassup.fetchJsonSync('youtrack.credentials');
     }
 
     this.getBranchConfigNames = function () {
-
-        var branchesArray = config.branches;
         var branchNames = [];
-        jQuery.each(branchesArray, function (index) {
-            var branch = branchesArray[index];
+
+        for( var index in config.branches ) {
+            var branch = config.branches[index];
             branchNames.push(branch.name);
-        });
+        }
         return branchNames;
     };
 
@@ -57,21 +42,6 @@ wassup.ConfigService = function () {
         return null;
     };
 
-    this.getYouTrackUrl = function () {
 
-        // TODO: resolve from config.json
-        return "https://youtrack.enonic.net/";
-    }
 
-    this.getYouTrackCredentials = function () {
-        return youTrackCredentials;
-    }
-
-    this.getSprintConfig = function () {
-
-        // TODO: resolve from config.json
-        return {
-            "youTrack": "http://youtrack.enonic.net/"
-        };
-    };
 }

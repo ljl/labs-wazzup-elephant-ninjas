@@ -76,6 +76,9 @@ self.onmessage = function (event) {
         var sprintTimeBar = sprintBarService.getSprintTimeBar();
         self.postMessage({ "sprintTimeBar": sprintTimeBar, "type": "sprintTimeBar"});
 
+        var sprintBar = sprintBarService.getSprintBar();
+        self.postMessage({"sprintBar": sprintBar, "type": "sprintBar"});
+
         // TODO: add code for retrieving  sprintStatusBar and postMessage with result
     }
 

@@ -27,5 +27,17 @@ wassup.YouTrackDao = function () {
         return wassup.fetchJsonSync(url, {}, opts)
     };
 
+    this.getSprintBar = function (sprint) {
+        var url = restUrl + "issue/byproject/CMS?filter=Sprint%3A+%7BSprint+" + sprint + "%7D&max=999&after=0";
+        var opts = {
+            auth: true,
+            user: user,
+            password: password
+        };
+
+        return wassup.fetchJsonSync(url, {}, opts)
+
+    }
+
 
 }

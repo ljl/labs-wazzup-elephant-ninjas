@@ -7,14 +7,19 @@ ui.sprintBar = function () {
 
     this.update = function (data) {
         $(sprintBarEl).html('');
-        data.forEach(function (element, index, array) {
+        $.each(data, function(key, value) {
             $(sprintBarEl).append('<div class="' +
-                                  element.name +
+                                  toClassName(key) +
                                   '" style="width: ' +
-                                  element.progress +
+                                  value +
                                   '%;">' +
-                                  element.name +
+                                  /*key +*/
                                   '</div>');
         });
+    }
+
+    function toClassName(str) {
+        return str.toLowerCase().replace(" ", '-');
+
     }
 }

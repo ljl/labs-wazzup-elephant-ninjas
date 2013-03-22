@@ -39,10 +39,11 @@ wassup.Main = function () {
                 me.sprintPeriodBar.update(event.data.sprintTimeBar)
                 // TODO: update ui with event.data.sprintTimeBar
             }
-            else if (event.data.type == "sprintStatusBar") {
+            else if (event.data.type == "sprintBar") {
                 console.log("Received sprintStatusBar...");
-                console.log(event.data.sprintStatusBar);
+                console.log(event.data.sprintBar);
                 // TODO: update ui with event.data.sprintStatusBar
+                me.sprintBar.update(event.data.sprintBar);
             }
         }
     }

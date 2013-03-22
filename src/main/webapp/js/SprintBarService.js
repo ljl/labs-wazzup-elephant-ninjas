@@ -2,6 +2,8 @@ wassup.SprintBarService = function () {
 
     var youTrackDao;
 
+    var currentSprint;
+
     // parses date in format 'MMM DD' (Mar 12) to a moment() object
     function parseSprintDate(dateValue) {
         var currentYear = new Date().getFullYear();
@@ -24,6 +26,8 @@ wassup.SprintBarService = function () {
             // Date logic to find current sprint
 
             var currentSprintData = youTrackSprintData.sprint[0];
+            currentSprint = currentSprintData.name.split(" ")[1];
+
             var sprintTimeBar = {
                 name: currentSprintData.name,
                 startDate: parseSprintDate(currentSprintData.start),
@@ -40,6 +44,38 @@ wassup.SprintBarService = function () {
             sprintTimeBar.finishDate = sprintTimeBar.finishDate.format("DD MMMM");
 
             return sprintTimeBar;
+        },
+
+        getSprintBar: function () {
+            var rawData = youTrackDao.getSprintBar(currentSprint);
+            var acceptedStates = {"Open": true, "In Progress": true, "Pull Request": true, "Verified": true, "Fixed": true}
+            var stats = {};
+            var total = 0;
+            rawData.forEach(function(issue, index, arr) {
+                var state = "";
+                issue.field.forEach(function(field) {
+                    if (field.name == "State") {
+                        state = field.value[0];
+
+                    }
+                });
+                if (acceptedStates[state]) {
+                    total++;
+                    if (stats[state]) {
+                        stats[state] = stats[state] + 1;
+                    } else {
+                        stats[state] = 1;
+                    }
+                }
+            });
+
+            for(var key in stats) {
+                var amount = stats[key];
+                stats[key] = amount/total * 100;
+            }
+
+
+            return stats;
         }
     }
 }

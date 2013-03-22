@@ -29,9 +29,6 @@ wassup.Main = function () {
             }
             else if (event.data.type == "branchBars") {
 
-                //console.log("Received branchBars...");
-                //console.log(event.data.branchBars);
-                console.log(event.data);
                 me.branchBar.update(event.data.branchBars);
             }
             else if (event.data.type == "sprintTimeBar") {

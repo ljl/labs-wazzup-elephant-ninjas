@@ -34,25 +34,12 @@ wassup.BranchBarService = function () {
         var buildStatistics;
         var changeIds = [];
 
-        self.postMessage({
-            type: "debug",
-            message: {"branchConfig": branchConfig}
-        });
-
         build = teamCityDao.getBuild(branchConfig.teamCity.buildTypeId);
-        /*self.postMessage({
-         type: "debug",
-         message: {"build" : build}
-         });*/
 
         branchBar.name = name;
         branchBar.status = build.status;
 
         buildStatistics = teamCityDao.getBuildStatistics(branchConfig.teamCity.buildTypeId);
-        /*self.postMessage({
-         type: "debug",
-         message: {"buildStatistics" : buildStatistics}
-         });*/
 
         for (var index in buildStatistics.property) {
             var prop = buildStatistics.property[index];

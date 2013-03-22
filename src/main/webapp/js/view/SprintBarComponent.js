@@ -10,12 +10,15 @@ var minFullTextWidths = {
     "Fixed": 12
 };
 
+var stateBarOrder = ["Open", "In Progress", "Pull Request", "Fixed", "Verified"];
+
 ui.sprintBar = function () {
     var sprintBarEl = $('[data-component=sprint-bar]');
 
     this.update = function (data) {
         $(sprintBarEl).html('');
-        $.each(data, function (stateId, stateValue) {
+        stateBarOrder.forEach(function (stateId) {
+            stateValue = data[stateId];
             $(sprintBarEl).append('<div class="' +
                                   toClassName(stateId) +
                                   '" style="width: ' +

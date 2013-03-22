@@ -14,7 +14,7 @@ ui.branchBar = function () {
                 var gravatarBase = "http://www.gravatar.com/avatar/";
                 var html = '<div class="bar">' +
                            '<div class="head">';
-                html += '<ul class="tests">';
+                html += '<ul class="tests" style="white-space:nowrap;">';
                 html += '<li class="status_' + branchBar.status + '">';
                 html += branchBar.name + '</li>';
 

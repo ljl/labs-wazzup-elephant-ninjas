@@ -40,10 +40,20 @@ wassup.Main = function () {
 
     var worker;
 
+    var sprintBar;
+    var sprintPeriodBar;
+    var branchBar;
+    var gitHubCommits;
+
     this.init = function () {
 
         // setup web worker
         worker = new Worker("js/request-worker.js");
+
+        sprintBar = new ui.sprintBar();
+        sprintPeriodBar = new ui.sprintPeriodBar();
+        branchBar = new ui.branchBar();
+        gitHubCommits = new ui.gitHubCommits();
 
         worker.onmessage = function (event) {
             if (event.data.type == "debug") {
@@ -52,7 +62,9 @@ wassup.Main = function () {
             else if (event.data.type = "branchBars") {
                 console.log("Received branchBars...");
                 console.log(event.data.branchBars);
-                // TODO: update ui with event.data.branchBars
+
+                // TODO: update ui with all branBars when component is ready for it
+                branchBar.update(event.data.branchBars[0]);
             }
             else if (event.data.type = "sprintTimeBar") {
                 console.log("Received sprintTimeBar...");

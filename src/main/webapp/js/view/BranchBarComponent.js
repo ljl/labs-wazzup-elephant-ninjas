@@ -12,28 +12,40 @@ ui.branchBar = function () {
             branchBars.forEach(function (branchBar, index, array) {
                 var gravatarHash = md5(branchBar.changes[0].username + "@enonic.com");
                 var gravatarBase = "http://www.gravatar.com/avatar/";
-                $(branchBarsEl).append('<div class="bar">' +
-                                       '<div class="head">' +
-                                       '<div class="status">' +
-                                       branchBar.name +
-                                       '</div>' +
-                                       '<ul class="tests">' +
-                                       '<li class="passed">' + branchBar.passedTestCount + '</li>' +
-                                       '<li class="failed">' + branchBar.failedTestCount + '</li>' +
-                                       '<li class="ignored">' + branchBar.ignoredTestCount + '</li>' +
-                                       '</ul>' +
-                                       '</div>' +
-                                       '<ul class="changes">' +
-                                       '<li>' +
-                                       '<img src="' + gravatarBase + gravatarHash + '"/>' +
-                                       '<span class="message">' +
-                                       branchBar.changes[0].message +
-                                       '</span>' +
-                                       '<span class="author">' +
-                                       '</span>' +
-                                       '</li>' +
-                                       '</ul>' +
-                                       '</div>');
+                var html = '<div class="bar">' +
+                           '<div class="head">';
+                html += '<div class="status_' + branchBar.status + '">';
+                html += branchBar.name +
+                        '</div>';
+                html += '<ul class="tests">';
+                if (branchBar.failedTestCount > 0) {
+                    html += '<li class="failed">' + branchBar.failedTestCount + '</li>';
+                    html += '<li class="passed">' + branchBar.passedTestCount + '</li>';
+                    html += '<li class="ignored">' + branchBar.ignoredTestCount + '</li>';
+                }
+                else {
+                    html += '<li class="passed">' + branchBar.passedTestCount + '</li>';
+                    html += '<li class="ignored">' + branchBar.ignoredTestCount + '</li>';
+                }
+
+                if (branchBar.codeCoverage != undefined) {
+                    html += '<li class="codeCoverage">' + branchBar.codeCoverage + '</li>';
+                }
+                html += '</ul>' +
+                        '</div>' +
+                        '<ul class="changes">' +
+                        '<li>' +
+                        '<img src="' + gravatarBase + gravatarHash + '"/>' +
+                        '<span class="message">' +
+                        branchBar.changes[0].message +
+                        '</span>' +
+                        '<span class="author">' +
+                        '</span>' +
+                        '</li>' +
+                        '</ul>' +
+                        '</div>';
+
+                $(branchBarsEl).append(html);
             });
         } else {
             console.error("No branch bar found");

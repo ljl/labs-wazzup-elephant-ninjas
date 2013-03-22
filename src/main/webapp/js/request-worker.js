@@ -16,17 +16,23 @@ self.onmessage = function (event) {
         return JSON.parse(request.response);
     }
 
-    wassup.fetchJsonSync = function (url, data, callback) {
+    wassup.fetchJsonSync = function (url, data, opts) {
 
         var request = new XMLHttpRequest();
         request.open('GET', url, false);
         request.setRequestHeader("Accept", "application/json");
         request.send(null);
-
-        if (callback != null) {
-            callback(request.response);
+        if (opts && opts.auth) {
+            request.setRequestHeader('Authorization', make_base_auth(opts.user, opts.password));
         }
+
         return JSON.parse(request.response);
+    }
+
+    function make_base_auth(user, password) {
+        var tok = user + ':' + password;
+        var hash = btoa(tok);
+        return "Basic " + hash;
     }
 
     <!-- Controllers -->

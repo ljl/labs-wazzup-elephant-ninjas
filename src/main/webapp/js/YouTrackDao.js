@@ -16,25 +16,29 @@ wassup.YouTrackDao = function () {
         password = credentials.password;
     }
 
-    this.getSprintInfo = function (callback) {
+    this.getSprintInfo = function () {
 
         var url = restUrl + "agile/CMS/sprints";
-        $.ajax({
+        var opts = {
+            auth: true,
+            user: user,
+            password: password
+        };
+
+        return wassup.fetchJsonSync(url, {}, opts)
+        /*$.ajax({
             url: url,
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', make_base_auth(user, password));
             },
             dataType: 'json',
             success: callback,
+            async: false,
             error: function () {
                 console.log(arguments);
             }
-        });
+        });*/
     };
 
-    function make_base_auth(user, password) {
-        var tok = user + ':' + password;
-        var hash = btoa(tok);
-        return "Basic " + hash;
-    }
+
 }

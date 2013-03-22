@@ -25,7 +25,7 @@ wassup.SprintBarService = function () {
             configService = value;
         },
 
-        getCurrentSprint: function (callback) {
+        getSprintBar: function (callback) {
 
             youTrackDao.getSprintInfo(function (youTrackSprintData) {
                 // Date logic to find current sprint

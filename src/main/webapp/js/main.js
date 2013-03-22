@@ -2,40 +2,6 @@ if (!wassup) {
     var wassup = {};
 }
 
-/*wassup.fetch = function (url, data, callback) {
-
-    //console.log("fetching url: ", url);
-
-    return $.ajax({
-        url: url,
-        data: data,
-        dataType: 'json',
-        async: true,
-        timeout: 1000,
-        success: callback,
-        error: function () {
-            console.log(arguments);
-        }
-    });
-}*/
-
-/*wassup.fetchJsonSync = function (url, data, callback) {
-
-    //console.log("fetching url: ", url);
-
-    return $.ajax({
-        url: url,
-        data: data,
-        dataType: 'json',
-        async: false,
-        timeout: 1000,
-        success: callback,
-        error: function () {
-            console.log(arguments);
-        }
-    });
-}*/
-
 wassup.Main = function () {
 
     var worker;
@@ -62,13 +28,14 @@ wassup.Main = function () {
                 console.log(event.data.message);
             }
             else if (event.data.type = "branchBars") {
+
                 console.log("Received branchBars...");
                 console.log(event.data.branchBars);
 
-                // TODO: update ui with all branBars when component is ready for it
                 me.branchBar.update(event.data.branchBars);
             }
             else if (event.data.type = "sprintTimeBar") {
+
                 console.log("Received sprintTimeBar...");
                 console.log(event.data.sprintTimeBar);
                 me.sprintPeriodBar.update(event.data.sprintTimeBar)

@@ -64,7 +64,7 @@ wassup.Main = function () {
                 console.log(event.data.branchBars);
 
                 // TODO: update ui with all branBars when component is ready for it
-                branchBar.update(event.data.branchBars[0]);
+                branchBar.update(event.data.branchBars);
             }
             else if (event.data.type = "sprintTimeBar") {
                 console.log("Received sprintTimeBar...");

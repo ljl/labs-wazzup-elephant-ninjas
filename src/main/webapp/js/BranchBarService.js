@@ -44,11 +44,15 @@ wassup.BranchBarService = function () {
 
         buildStatistics = teamCityDao.getBuildStatistics(branchConfig.teamCity.buildTypeId);
 
-        //console.log("getBranchBar buildStatistics: ", buildStatistics);
+        self.postMessage({
+            type: "debug",
+            message: "prop 15" + buildStatistics.property[15]
+        });
 
-        branchBar.passedTestCount = buildStatistics.property[7].value;
-        branchBar.failedTestCount = buildStatistics.property[5].value;
-        branchBar.ignoredTestCount = buildStatistics.property[6].value;
+        //branchBar.passedTestCount = buildStatistics.property[15].value;
+        branchBar.passedTestCount = "1";
+        branchBar.failedTestCount = "1";
+        branchBar.ignoredTestCount = "1";
 
         var changesRefJson = teamCityDao.get(buildJson.changes.href);
 

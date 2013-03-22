@@ -41,16 +41,17 @@
     </div>
 
     <div class="sprint-bar" data-component="sprint-bar">
-            Loading sprint bar...
-        </div>
+        Loading sprint bar...
+    </div>
 
 
     <br/>
     <button class="btn" data-load="start-automagic-update">Start automatic update</button>
-    <button class="btn" data-load="sprint-bar">Load sprintbar</button>
+
+    <!--button class="btn" data-load="sprint-bar">Load sprintbar</button>
     <button class="btn" data-load="sprint-period-bar">Load sprint period</button>
     <button class="btn" data-load="github-commits">Load github</button>
-    <button class="btn" data-load="branch-bar">Load branchbar</button>
+    <button class="btn" data-load="branch-bar">Load branchbar</button-->
 </div>
 
 <!-- Libraries -->
@@ -80,49 +81,53 @@
         var hash = md5("tsi@enonic.com");
         console.log("http://www.gravatar.com/avatar/" + hash);
 
+        main.init();
+
         $('[data-load=start-automagic-update]').on('click', function () {
 
             main.startAutomagicUpdate();
         });
 
+
         /*$.getJSON("js/model/sprintStatusBar.json", function (data) {
-            main.sprintBar.update(data);
-        });
+         main.sprintBar.update(data);
+         });
 
-        main.branchBarService.getBranchBar("5.0", function (branchBar) {
-            main.branchBar.update(branchBar);
-        });*/
+         main.branchBarService.getBranchBar("5.0", function (branchBar) {
+         main.branchBar.update(branchBar);
+         });*/
 
-        $('[data-load=sprint-bar]').on('click', function () {
-            $.getJSON("js/model/sprintStatusBar.json", function (data) {
-                main.sprintBar.update(data);
-            });
+        /*$('[data-load=sprint-bar]').on('click', function () {
+         $.getJSON("js/model/sprintStatusBar.json", function (data) {
+         main.sprintBar.update(data);
+         });
 
-        });
+         });*/
 
-        $('[data-load=branch-bar]').on('click', function () {
-            main.branchBarService.getBranchBars(function (branchBars) {
-                console.log("branchBars: ", branchBars);
-            });
-            main.branchBarService.getBranchBar("5.0", function (branchBar) {
-                main.branchBar.update(branchBar);
-            });
-        });
+        /*$('[data-load=branch-bar]').on('click', function () {
+         main.branchBarService.getBranchBars(function (branchBars) {
+         console.log("branchBars: ", branchBars);
+         });
+         main.branchBarService.getBranchBar("5.0", function (branchBar) {
+         main.branchBar.update(branchBar);
+         });
+         });*/
 
-        $('[data-load=github-commits]').on('click', function () {
-            main.branchBarService.getBranchBar("5.0", function (branchBar) {
-                $.getJSON("js/model/gitHubCommits.json", function (data) {
-                    main.gitHubCommits.update(data);
-                });
-            });
-        });
+        /*$('[data-load=github-commits]').on('click', function () {
+         main.branchBarService.getBranchBar("5.0", function (branchBar) {
+         $.getJSON("js/model/gitHubCommits.json", function (data) {
+         main.gitHubCommits.update(data);
+         });
+         });
+         });*/
 
-        $('[data-load=sprint-period-bar]').on('click', function () {
-            main.sprintBarService.getCurrentSprint(function (sprintData) {
-                main.sprintPeriodBar.update(sprintData);
-            });
-        });
-        main.init();
+        /*$('[data-load=sprint-period-bar]').on('click', function () {
+         main.sprintBarService.getCurrentSprint(function (sprintData) {
+         main.sprintPeriodBar.update(sprintData);
+         });
+         });*/
+
+
     });
 
 </script>

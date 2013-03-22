@@ -53,6 +53,9 @@ wassup.BranchBarService = function () {
             else if (prop.name == "FailedTestCount") {
                 branchBar.failedTestCount = prop.value;
             }
+            else if (prop.name == "CodeCoverageL") {
+                branchBar.codeCoverage = prop.value;
+            }
         }
         if (branchBar.failedTestCount == undefined) {
             branchBar.failedTestCount = 0;

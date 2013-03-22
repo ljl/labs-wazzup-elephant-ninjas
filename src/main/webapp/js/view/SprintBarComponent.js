@@ -11,9 +11,9 @@ ui.sprintBar = function () {
             $(sprintBarEl).append('<div class="' +
                                   toClassName(key) +
                                   '" style="width: ' +
-                                  value +
-                                  '%;">' +
-                                  /*key +*/
+                                  value.percent +
+                                  '%;"><br/>' +
+                                  (value.percent >= 15? value.count+' issues': value.count) +
                                   '</div>');
         });
     }

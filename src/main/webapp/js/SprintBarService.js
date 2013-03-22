@@ -51,9 +51,9 @@ wassup.SprintBarService = function () {
             var acceptedStates = {"Open": true, "In Progress": true, "Pull Request": true, "Verified": true, "Fixed": true}
             var stats = {};
             var total = 0;
-            rawData.forEach(function(issue, index, arr) {
+            rawData.forEach(function (issue, index, arr) {
                 var state = "";
-                issue.field.forEach(function(field) {
+                issue.field.forEach(function (field) {
                     if (field.name == "State") {
                         state = field.value[0];
 
@@ -69,9 +69,13 @@ wassup.SprintBarService = function () {
                 }
             });
 
-            for(var key in stats) {
+            for (var key in stats) {
                 var amount = stats[key];
-                stats[key] = amount/total * 100;
+                stats[key] = amount / total * 100;
+                stats[key] = {
+                    percent: amount / total * 100,
+                    count: amount
+                };
             }
 
 

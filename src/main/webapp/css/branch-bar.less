@@ -10,79 +10,95 @@ box-sizing: border-box;*/ //padding: 0 4rem 0 0;
     overflow: hidden;
   }
 
-  .status_SUCCESS {
-    width: 3em;
-    height: 3em;
-    background-color: green;
-    color: white;
-    float: left;
-    padding: 0.75em;
-    box-sizing: border-box;
-    width: 50%;
-  }
-
-  .status_FAILURE {
-    width: 3em;
-    height: 3em;
-    background-color: #b94a48;;
-    color: white;
-    float: left;
-    padding: 0.75em;
-    box-sizing: border-box;
-    width: 50%;
+  .bar {
+    margin-bottom: 30px;
   }
 
   ul {
     list-style: none;
     margin: 0;
     padding: 0;
-    overflow: hidden;
+    overflow: auto;
   }
 
   .tests {
     text-transform: uppercase;
-    float: left;
-    width: 50%;
+    float: left; //width: 80%;
     li {
       float: left;
       padding: 0.75em;
       color: white;
       box-sizing: border-box;
-      width: 33%; //.text-shadow(0);
+      width: 300px; //.text-shadow(0);
+      text-wrap: none;
     }
+
+    .status_SUCCESS {
+      width: 3em;
+      height: 3em;
+      background-color: green;
+      color: white;
+      float: left;
+      padding: 0.75em;
+      box-sizing: border-box;
+      width: 200px;
+    }
+
+    .status_FAILURE {
+      width: 3em;
+      height: 3em;
+      background-color: #b94a48;;
+      color: white;
+      float: left;
+      padding: 0.75em;
+      box-sizing: border-box;
+      width: 100px;
+    }
+
     .passed {
       color: #468847;
       background-color: #dff0d8;
       border-color: #d6e9c6;
-      &:after {
-        content: ' passed';
-      }
+      width: 300px;
     }
 
     .ignored {
       color: #c09853;
       background-color: #fcf8e3;
-      &:after {
-        content: ' ignored';
-      }
+      width: 200px;
     }
 
     .failed {
       color: #b94a48;
       background-color: #f2dede;
       border-color: #eed3d7;
-      &:after {
-        content: ' failed';
-      }
+      width: 200px;
     }
 
     .codeCoverage {
       color: #468847;
       background-color: #dff0d8;
       border-color: #d6e9c6;
+      width: 200px;
       &:after {
         content: ' % coverage';
       }
+    }
+
+    .changers {
+      color: #468847;
+      background-color: #fcf8e3;
+      border-color: #d6e9c6;
+      text-transform: none;
+      padding: 0px;
+    }
+
+    .changeMessages {
+      color: #468847;
+      background-color: #fcf8e3;
+      border-color: #d6e9c6;
+      width: auto;
+      text-transform: none;
     }
   }
 

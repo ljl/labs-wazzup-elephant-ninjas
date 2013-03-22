@@ -60,10 +60,11 @@ self.onmessage = function (event) {
     var sprintBarService = new wassup.SprintBarService();
     sprintBarService.setYouTrackDao(youTrackDao);
 
-    setInterval(function () {
-        runEveryXSeconds()
-    }, 5000);
-
+    runEveryXSeconds();
+    /*setInterval(function () {
+     runEveryXSeconds()
+     }, 5000);
+     */
     function runEveryXSeconds() {
 
         var branchBars = branchBarService.getBranchBars();

@@ -46,7 +46,7 @@
 
 
     <br/>
-    <button class="btn" data-load="start-automagic-update">Start automatic update</button>
+    <!--button class="btn" data-load="start-automagic-update">Start automatic update</button-->
 
     <!--button class="btn" data-load="sprint-bar">Load sprintbar</button>
     <button class="btn" data-load="sprint-period-bar">Load sprint period</button>
@@ -77,11 +77,7 @@
         console.log("http://www.gravatar.com/avatar/" + hash);
 
         main.init();
-
-        $('[data-load=start-automagic-update]').on('click', function () {
-
-            main.startAutomagicUpdate();
-        });
+        main.startAutomagicUpdate();
 
 
         /*$.getJSON("js/model/sprintStatusBar.json", function (data) {

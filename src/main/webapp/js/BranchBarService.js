@@ -49,10 +49,10 @@ wassup.BranchBarService = function () {
         for (var index in buildStatistics.property) {
             var prop = buildStatistics.property[index];
 
-            /*self.postMessage({
-             type: "debug",
-             message: prop.name + ": " + prop.value
-             });*/
+            self.postMessage({
+                type: "debug",
+                message: prop.name + ": " + prop.value
+            });
 
             if (prop.name == "PassedTestCount") {
                 branchBar.passedTestCount = prop.value;

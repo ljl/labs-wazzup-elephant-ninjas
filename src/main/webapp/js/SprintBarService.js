@@ -36,6 +36,9 @@ wassup.SprintBarService = function () {
             sprintTimeBar.progress = sprintPosition >= sprintLength ? 100 : (sprintPosition / sprintLength);
             sprintTimeBar.daysReamining = daysLeft > 0 ? daysLeft : 0;
 
+            sprintTimeBar.startDate = sprintTimeBar.startDate.format("DD MMMM");
+            sprintTimeBar.finishDate = sprintTimeBar.finishDate.format("DD MMMM");
+
             return sprintTimeBar;
         }
     }

@@ -26,19 +26,12 @@ self.onmessage = function (event) {
         var request = new XMLHttpRequest();
         request.open('GET', url, false);
         request.setRequestHeader("Accept", "application/json");
-        request.send(null);
+
+
         if (opts && opts.auth) {
-            self.postMessage({
-                type: "debug",
-                message: "opts.user: " + opts.user
-            });
-            self.postMessage({
-                type: "debug",
-                message: "opts.password: " + opts.password
-            });
             request.setRequestHeader('Authorization', make_base_auth(opts.user, opts.password));
         }
-
+        request.send(null);
         return JSON.parse(request.response);
     }
 
@@ -49,7 +42,7 @@ self.onmessage = function (event) {
     }
 
     <!-- Controllers -->
-    importScripts('lib/base64.js', 'ConfigService.js', 'BranchBarService.js', 'TeamCityDao.js', 'SprintBarService.js', 'YouTrackDao.js');
+    importScripts('lib/base64.js', 'lib/moment.js', 'ConfigService.js', 'BranchBarService.js', 'TeamCityDao.js', 'SprintBarService.js', 'YouTrackDao.js');
 
     var configService = new wassup.ConfigService();
     configService.loadConfig();
@@ -69,18 +62,19 @@ self.onmessage = function (event) {
     sprintBarService.setYouTrackDao(youTrackDao);
 
     runEveryXSeconds();
-    /*setInterval(function () {
-     runEveryXSeconds()
-     }, 5000);
-     */
+    setInterval(function () {
+        runEveryXSeconds()
+    }, 200000);
+
+
     function runEveryXSeconds() {
 
         var branchBars = branchBarService.getBranchBars();
-        self.postMessage({ "branchBars": branchBars});
+        self.postMessage({ "branchBars": branchBars, "type": "branchBars"});
 
         // TODO: add code for retrieving sprintTimeBar and postMessage with result
         var sprintTimeBar = sprintBarService.getSprintTimeBar();
-        self.postMessage({ "sprintTimeBar": sprintTimeBar});
+        self.postMessage({ "sprintTimeBar": sprintTimeBar, "type": "sprintTimeBar"});
 
         // TODO: add code for retrieving  sprintStatusBar and postMessage with result
     }

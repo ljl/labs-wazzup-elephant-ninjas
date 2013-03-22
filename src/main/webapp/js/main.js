@@ -27,14 +27,14 @@ wassup.Main = function () {
             if (event.data.type == "debug") {
                 console.log(event.data.message);
             }
-            else if (event.data.type = "branchBars") {
+            else if (event.data.type == "branchBars") {
 
                 //console.log("Received branchBars...");
                 //console.log(event.data.branchBars);
-
+                console.log(event.data);
                 me.branchBar.update(event.data.branchBars);
             }
-            else if (event.data.type = "sprintTimeBar") {
+            else if (event.data.type == "sprintTimeBar") {
 
                 console.log("Received sprintTimeBar...");
                 console.log(event.data.sprintTimeBar);
@@ -42,7 +42,7 @@ wassup.Main = function () {
                 me.sprintPeriodBar.update(event.data.sprintTimeBar)
                 // TODO: update ui with event.data.sprintTimeBar
             }
-            else if (event.data.type = "sprintStatusBar") {
+            else if (event.data.type == "sprintStatusBar") {
                 console.log("Received sprintStatusBar...");
                 console.log(event.data.sprintStatusBar);
                 // TODO: update ui with event.data.sprintStatusBar

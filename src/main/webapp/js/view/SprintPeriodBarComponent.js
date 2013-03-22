@@ -34,8 +34,9 @@ ui.sprintPeriodBar = function () {
     var sprintPeriodBarEl = $('[data-component=sprint-period-bar]');
 
     this.update = function (sprintData) {
-        var startText = sprintData.startDate.format('DD MMMM');
-        var endText = sprintData.finishDate.format('DD MMMM');
+        console.log(sprintData.startDate);
+        var startText = sprintData.startDate;
+        var endText = sprintData.finishDate;
         var progWidth = (sprintData.progress*100).toFixed(2);
         var daysLeft = sprintData.daysReamining;
 

@@ -14,7 +14,6 @@
 </head>
 <body>
 <div class="container-fluid">
-    <h1>Wazzup elephant ninjas?</h1>
 
     <div class="sprint-period-bar" data-component="sprint-period-bar">
         Loading sprint bar...
@@ -25,18 +24,18 @@
 
     </div>
 
-    <div class="branch-bars" data-component="branch-bars">
+    <div class="branch-bars container-half" data-component="branch-bars">
         Loading branch bars...
     </div>
 
-    <div class="days-remaining">
+    <div class="days-remaining container-half right">
         <div class="donut-container">
             <div class="donut donut-big">
                 <div id="donutSprintRemaining" class="donut-arrow" data-percentage="0"></div>
             </div>
         </div>
         <div class="countdown">
-            <span>14</span> days remaining
+            <span id="sprintDaysRemainingText">14</span> days remaining
         </div>
     </div>
 
@@ -44,14 +43,6 @@
         Loading sprint bar...
     </div>
 
-
-    <br/>
-    <!--button class="btn" data-load="start-automagic-update">Start automatic update</button-->
-
-    <!--button class="btn" data-load="sprint-bar">Load sprintbar</button>
-    <button class="btn" data-load="sprint-period-bar">Load sprint period</button>
-    <button class="btn" data-load="github-commits">Load github</button>
-    <button class="btn" data-load="branch-bar">Load branchbar</button-->
 </div>
 
 <!-- Libraries -->
@@ -73,8 +64,6 @@
 <script type="text/javascript">
     $(function () {
         var main = new wassup.Main();
-        var hash = md5("tsi@enonic.com");
-        console.log("http://www.gravatar.com/avatar/" + hash);
 
         main.init();
         main.startAutomagicUpdate();

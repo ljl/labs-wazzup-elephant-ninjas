@@ -30,29 +30,32 @@ wassup.BranchBarService = function () {
         var branchBar = {};
 
         var branchConfig = configService.getBranchConfig(name);
-        var buildJson;
+        var build;
         var buildStatistics;
         var changeIds = [];
 
-        //console.log( "getBranchBar branchConfig: ", branchConfig );
+        self.postMessage({
+            type: "debug",
+            message: {"branchConfig": branchConfig}
+        });
 
-        buildJson = teamCityDao.getBuild(branchConfig.teamCity.buildTypeId);
-        //console.log(" getBranchBar buildJson: ", buildJson);
+        build = teamCityDao.getBuild(branchConfig.teamCity.buildTypeId);
+        /*self.postMessage({
+         type: "debug",
+         message: {"build" : build}
+         });*/
 
         branchBar.name = name;
-        branchBar.status = buildJson.status;
+        branchBar.status = build.status;
 
         buildStatistics = teamCityDao.getBuildStatistics(branchConfig.teamCity.buildTypeId);
+        /*self.postMessage({
+         type: "debug",
+         message: {"buildStatistics" : buildStatistics}
+         });*/
 
-
-        //branchBar.passedTestCount = buildStatistics.property[15].value;
         for (var index in buildStatistics.property) {
             var prop = buildStatistics.property[index];
-
-            self.postMessage({
-                type: "debug",
-                message: prop.name + ": " + prop.value
-            });
 
             if (prop.name == "PassedTestCount") {
                 branchBar.passedTestCount = prop.value;
@@ -64,14 +67,16 @@ wassup.BranchBarService = function () {
                 branchBar.failedTestCount = prop.value;
             }
         }
+        if (branchBar.failedTestCount == undefined) {
+            branchBar.failedTestCount = 0;
+        }
 
-        var changesRefJson = teamCityDao.get(buildJson.changes.href);
+        var changesRefJson = teamCityDao.get(build.changes.href);
 
         for (index in changesRefJson.change) {
             changeIds.push(changesRefJson.change[index].id);
 
             var tcChangeJson = teamCityDao.getChanges(changesRefJson.change[index].id);
-            //console.log("getBranchBar change", tcChangeJson);
             branchBar.changes = [];
             var change = {
                 "message": tcChangeJson.comment,
@@ -79,8 +84,6 @@ wassup.BranchBarService = function () {
             };
 
             branchBar.changes.push(change);
-
-            //console.log("returned branchBar", branchBar);
         }
         return branchBar;
     };

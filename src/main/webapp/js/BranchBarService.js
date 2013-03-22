@@ -44,19 +44,30 @@ wassup.BranchBarService = function () {
 
         buildStatistics = teamCityDao.getBuildStatistics(branchConfig.teamCity.buildTypeId);
 
-        self.postMessage({
-            type: "debug",
-            message: "prop 15" + buildStatistics.property[15]
-        });
 
         //branchBar.passedTestCount = buildStatistics.property[15].value;
-        branchBar.passedTestCount = "1";
-        branchBar.failedTestCount = "1";
-        branchBar.ignoredTestCount = "1";
+        for (var index in buildStatistics.property) {
+            var prop = buildStatistics.property[index];
+
+            /*self.postMessage({
+             type: "debug",
+             message: prop.name + ": " + prop.value
+             });*/
+
+            if (prop.name == "PassedTestCount") {
+                branchBar.passedTestCount = prop.value;
+            }
+            else if (prop.name == "IgnoredTestCount") {
+                branchBar.ignoredTestCount = prop.value;
+            }
+            else if (prop.name == "FailedTestCount") {
+                branchBar.failedTestCount = prop.value;
+            }
+        }
 
         var changesRefJson = teamCityDao.get(buildJson.changes.href);
 
-        for (var index in changesRefJson.change) {
+        for (index in changesRefJson.change) {
             changeIds.push(changesRefJson.change[index].id);
 
             var tcChangeJson = teamCityDao.getChanges(changesRefJson.change[index].id);

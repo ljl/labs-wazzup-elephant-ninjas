@@ -69,6 +69,15 @@ wassup.SprintBarService = function () {
                 }
             });
 
+            /*
+            // generate random values for testing widths
+            total = 0;
+            for (var key in stats) {
+                stats[key] = Math.floor(Math.random()*30) + 1;
+                total = total + stats[key];
+            }
+            */
+
             for (var key in stats) {
                 var amount = stats[key];
                 stats[key] = amount / total * 100;

@@ -5,9 +5,9 @@ if (!ui) {
 var minFullTextWidths = {
     "Open": 10,
     "In Progress": 15,
-    "Pull Request": 20,
-    "Verified": 15,
-    "Fixed": 15
+    "Pull Request": 16,
+    "Verified": 13,
+    "Fixed": 12
 };
 
 ui.sprintBar = function () {

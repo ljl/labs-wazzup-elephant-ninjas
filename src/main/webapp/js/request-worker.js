@@ -28,6 +28,14 @@ self.onmessage = function (event) {
         request.setRequestHeader("Accept", "application/json");
         request.send(null);
         if (opts && opts.auth) {
+            self.postMessage({
+                type: "debug",
+                message: "opts.user: " + opts.user
+            });
+            self.postMessage({
+                type: "debug",
+                message: "opts.password: " + opts.password
+            });
             request.setRequestHeader('Authorization', make_base_auth(opts.user, opts.password));
         }
 
@@ -36,12 +44,12 @@ self.onmessage = function (event) {
 
     function make_base_auth(user, password) {
         var tok = user + ':' + password;
-        var hash = btoa(tok);
+        var hash = Base64.encode(tok);
         return "Basic " + hash;
     }
 
     <!-- Controllers -->
-    importScripts('ConfigService.js', 'BranchBarService.js', 'TeamCityDao.js', 'SprintBarService.js', 'YouTrackDao.js');
+    importScripts('lib/base64.js', 'ConfigService.js', 'BranchBarService.js', 'TeamCityDao.js', 'SprintBarService.js', 'YouTrackDao.js');
 
     var configService = new wassup.ConfigService();
     configService.loadConfig();

@@ -42,7 +42,8 @@ self.onmessage = function (event) {
     }
 
     <!-- Controllers -->
-    importScripts('lib/base64.js', 'lib/moment.js', 'ConfigService.js', 'BranchBarService.js', 'TeamCityDao.js', 'SprintBarService.js', 'YouTrackDao.js');
+    importScripts('lib/base64.js', 'lib/moment.js', 'ConfigService.js', 'BranchBarService.js', 'TeamCityDao.js', 'SprintBarService.js',
+        'YouTrackDao.js');
 
     var configService = new wassup.ConfigService();
     configService.loadConfig();
@@ -64,7 +65,7 @@ self.onmessage = function (event) {
     runEveryXSeconds();
     setInterval(function () {
         runEveryXSeconds()
-    }, 200000);
+    }, 10000);
 
 
     function runEveryXSeconds() {
@@ -72,7 +73,6 @@ self.onmessage = function (event) {
         var branchBars = branchBarService.getBranchBars();
         self.postMessage({ "branchBars": branchBars, "type": "branchBars"});
 
-        // TODO: add code for retrieving sprintTimeBar and postMessage with result
         var sprintTimeBar = sprintBarService.getSprintTimeBar();
         self.postMessage({ "sprintTimeBar": sprintTimeBar, "type": "sprintTimeBar"});
 

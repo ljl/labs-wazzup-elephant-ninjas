@@ -1,9 +1,6 @@
-
-
 wassup.SprintBarService = function () {
 
-    var configService,
-        youTrackDao;
+    var youTrackDao;
 
     // parses date in format 'MMM DD' (Mar 12) to a moment() object
     function parseSprintDate(dateValue) {
@@ -21,29 +18,25 @@ wassup.SprintBarService = function () {
             youTrackDao = value;
         },
 
-        setConfigService: function (value) {
-            configService = value;
-        },
+        getSprintTimeBar: function () {
 
-        getSprintBar: function (callback) {
+            var youTrackSprintData = youTrackDao.getSprintInfo();
+            // Date logic to find current sprint
 
-            youTrackDao.getSprintInfo(function (youTrackSprintData) {
-                // Date logic to find current sprint
+            var currentSprintData = youTrackSprintData.sprint[0];
+            var sprintTimeBar = {
+                name: currentSprintData.name,
+                startDate: parseSprintDate(currentSprintData.start),
+                finishDate: parseSprintDate(currentSprintData.finish),
+                currentDate: moment()
+            }
+            var sprintLength = sprintTimeBar.finishDate.diff(sprintTimeBar.startDate, 'minutes');
+            var sprintPosition = sprintTimeBar.currentDate.diff(sprintTimeBar.startDate, 'minutes');
+            var daysLeft = sprintTimeBar.finishDate.diff(sprintTimeBar.currentDate, 'days');
+            sprintTimeBar.progress = sprintPosition >= sprintLength ? 100 : (sprintPosition / sprintLength);
+            sprintTimeBar.daysReamining = daysLeft > 0 ? daysLeft : 0;
 
-                var currentSprintData = youTrackSprintData.sprint[0];
-                var currentSprint = {
-                    name: currentSprintData.name,
-                    startDate: parseSprintDate(currentSprintData.start),
-                    finishDate: parseSprintDate(currentSprintData.finish),
-                    currentDate: moment()
-                }
-                var sprintLength = currentSprint.finishDate.diff(currentSprint.startDate, 'minutes');
-                var sprintPosition = currentSprint.currentDate.diff(currentSprint.startDate, 'minutes');
-                var daysLeft = currentSprint.finishDate.diff(currentSprint.currentDate, 'days');
-                currentSprint.progress = sprintPosition >= sprintLength ? 100 : (sprintPosition / sprintLength);
-                currentSprint.daysReamining = daysLeft > 0 ? daysLeft : 0;
-                callback(currentSprint);
-            });
+            return sprintTimeBar;
         }
     }
 }

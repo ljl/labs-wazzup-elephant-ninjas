@@ -18,6 +18,11 @@ self.onmessage = function (event) {
 
     wassup.fetchJsonSync = function (url, data, opts) {
 
+        self.postMessage({
+            type: "debug",
+            message: "fetching json at url: " + url
+        });
+
         var request = new XMLHttpRequest();
         request.open('GET', url, false);
         request.setRequestHeader("Accept", "application/json");
@@ -44,9 +49,16 @@ self.onmessage = function (event) {
     var teamCityDao = new wassup.TeamCityDao();
     teamCityDao.setTeamCityUrl(configService.getTeamCityUrl());
 
+    var youTrackDao = new wassup.YouTrackDao();
+    youTrackDao.setYouTrackUrl(configService.getYouTrackUrl());
+    youTrackDao.setYouTrackCredentials(configService.getYouTrackCredentials());
+
     var branchBarService = new wassup.BranchBarService();
     branchBarService.setTeamCityDao(teamCityDao);
     branchBarService.setConfigService(configService);
+
+    var sprintBarService = new wassup.SprintBarService();
+    sprintBarService.setYouTrackDao(youTrackDao);
 
     setInterval(function () {
         runEveryXSeconds()
@@ -55,10 +67,12 @@ self.onmessage = function (event) {
     function runEveryXSeconds() {
 
         var branchBars = branchBarService.getBranchBars();
-        var message = { "branchBars": branchBars};
-        self.postMessage(message);
+        self.postMessage({ "branchBars": branchBars});
 
         // TODO: add code for retrieving sprintTimeBar and postMessage with result
+        var sprintTimeBar = sprintBarService.getSprintTimeBar();
+        self.postMessage({ "sprintTimeBar": sprintTimeBar});
+
         // TODO: add code for retrieving  sprintStatusBar and postMessage with result
     }
 

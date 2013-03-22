@@ -1,4 +1,3 @@
-
 wassup.YouTrackDao = function () {
 
     var youTrackUrl;
@@ -26,18 +25,6 @@ wassup.YouTrackDao = function () {
         };
 
         return wassup.fetchJsonSync(url, {}, opts)
-        /*$.ajax({
-            url: url,
-            beforeSend: function (xhr) {
-                xhr.setRequestHeader('Authorization', make_base_auth(user, password));
-            },
-            dataType: 'json',
-            success: callback,
-            async: false,
-            error: function () {
-                console.log(arguments);
-            }
-        });*/
     };
 
 
